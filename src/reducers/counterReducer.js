@@ -2,8 +2,8 @@ export default (state = 0, action) => {
   switch (action.type) {
     case 'ADD':
       return state + 1;
-    case 'SUBTRACT':
-      return state + 2;
+    case 'SUB':
+      return state - 1;
     default:
       return state;
   }
