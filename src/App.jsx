@@ -1,7 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { createStore } from './mattdux';
+
+import { Provider } from './mattdux-react';
+
 import Counter from './components/Counter';
+
+const store = createStore();
 
 const Main = styled.div`
   width: 100%;
@@ -14,9 +20,11 @@ const Main = styled.div`
 
 function App() {
   return (
-    <Main>
-      <Counter />
-    </Main>
+    <Provider store={store}>
+      <Main>
+        <Counter />
+      </Main>
+    </Provider>
   );
 }
 
