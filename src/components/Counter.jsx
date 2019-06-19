@@ -1,7 +1,8 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { Context } from '../mattdux-react';
+import { connect } from '../mattdux-react';
 
+import { add, sub } from '../actions';
 
 const Container = styled.section`
   box-sizing: border-box;
@@ -46,9 +47,8 @@ const Buttons = styled.div`
   }
 `;
 
-function Counter() {
-  const context = useContext(Context);
-  console.log(context);
+function Counter(props) {
+  console.log(props);
   return (
     <Container>
       <Screen><h1>counter!!</h1></Screen>
@@ -60,4 +60,4 @@ function Counter() {
   );
 }
 
-export default Counter;
+export default connect(null, { add, sub })(Counter);
