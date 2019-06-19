@@ -1,5 +1,7 @@
-import React from "react";
-import styled from "styled-components";
+import React, { useContext } from 'react';
+import styled from 'styled-components';
+import { Context } from '../mattdux-react';
+
 
 const Container = styled.section`
   box-sizing: border-box;
@@ -45,12 +47,14 @@ const Buttons = styled.div`
 `;
 
 function Counter() {
+  const context = useContext(Context);
+  console.log(context);
   return (
     <Container>
       <Screen><h1>counter!!</h1></Screen>
       <Buttons>
-        <button>+</button>
-        <button>-</button>
+        <button type="button">+</button>
+        <button type="button">-</button>
       </Buttons>
     </Container>
   );
