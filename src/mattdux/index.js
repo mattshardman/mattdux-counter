@@ -1,8 +1,12 @@
 class Mattdux {
   constructor() {
-    this.reducers = {};
-    this.actions = [];
+    this.reducers = [];
+    this.actions = {};
     this.store = {};
+  }
+
+  callReducers = (action) => {
+    console.log(action);
   }
 
   createStore = (reducers) => {

@@ -53,7 +53,7 @@ function Counter(props) {
     <Container>
       <Screen><h1>counter!!</h1></Screen>
       <Buttons>
-        <button type="button">+</button>
+        <button type="button" >+</button>
         <button type="button">-</button>
       </Buttons>
     </Container>
