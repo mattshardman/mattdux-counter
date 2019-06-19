@@ -1,10 +1,11 @@
 import React from 'react';
+import { Context } from '.';
 
-function Provider({ children }) {
+function Provider({ children, store }) { //eslint-disable-line
   return (
-    <div>
+    <Context.Provider value={store}>
       {children}
-    </div>
+    </Context.Provider>
   );
 }
 
