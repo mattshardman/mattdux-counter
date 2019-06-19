@@ -1,7 +1,7 @@
 import React from 'react';
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import Counter from './Counter';
+import Counter from './components/Counter';
 
 const Main = styled.div`
   width: 100%;
@@ -17,7 +17,7 @@ function App() {
     <Main>
       <Counter />
     </Main>
-  )
+  );
 }
 
 export default App;
