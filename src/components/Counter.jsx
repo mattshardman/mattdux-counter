@@ -28,6 +28,10 @@ const Screen = styled.div`
   border: 1px solid #dadce0;
   border-radius: 4px;
   background: rgb(232, 240, 254);
+
+  h1 {
+    font-size: 60px;
+  }
 `;
 
 const Buttons = styled.div`
