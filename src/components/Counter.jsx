@@ -52,11 +52,11 @@ const Buttons = styled.div`
 `;
 
 function Counter(props) {
-  const { add, sub, counter } = props;
+  const { add, sub, num } = props;
 
   return (
     <Container>
-      <Screen><h1>{counter.num}</h1></Screen>
+      <Screen><h1>{num}</h1></Screen>
       <Buttons>
         <button type="button" onClick={add}>+</button>
         <button type="button" onClick={sub}>-</button>
@@ -65,4 +65,6 @@ function Counter(props) {
   );
 }
 
-export default connect(null, { add, sub })(Counter);
+const mapStateToProps = state => state.counter;
+
+export default connect(mapStateToProps, { add, sub })(Counter);

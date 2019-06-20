@@ -10,13 +10,23 @@ const connect = (mapStateToProps, actions) => (Component) => {
     const actionsArr = Object.entries(actions);
 
     useEffect(() => {
-      setState(mattdux.store);
+      if (mapStateToProps) {
+        const stateSlice = mapStateToProps(mattdux.store);
+        setState(stateSlice);
+      } else {
+        setState(mattdux.store);
+      }
 
       const funcs = actionsArr.reduce((acc, [actionName, actionFunc]) => {
         acc[actionName] = (input) => {
           const action = actionFunc(input);
           const newState = mattdux.callReducers(action);
-          setState(newState);
+          if (mapStateToProps) {
+            const stateSlice = mapStateToProps(newState);
+            setState(stateSlice);
+          } else {
+            setState(mattdux.store);
+          }
         };
         return acc;
       }, {});
