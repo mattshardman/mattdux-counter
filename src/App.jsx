@@ -2,13 +2,15 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { createStore } from './mattdux';
+// import { createStore } from 'redux';
 import { Provider } from './mattdux-react';
+// import { Provider } from 'react-redux';
 
-import counter from './reducers/counterReducer';
+import rootReducer from './reducers';
 
 import Counter from './components/Counter';
 
-const store = createStore({ counter });
+const store = createStore(rootReducer);
 
 const Main = styled.div`
   width: 100%;
