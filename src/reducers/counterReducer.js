@@ -3,7 +3,8 @@ export default (state = { num: 0 }, action) => {
     case 'ADD':
       return { num: state.num + 1 };
     case 'SUB':
-      return { num: state.num - 1 };
+      if (state.num > 0) return { num: state.num - 1 };
+      return state;
     default:
       return state;
   }
