@@ -4,11 +4,11 @@ import styled from 'styled-components';
 import { createStore } from './mattdux';
 import { Provider } from './mattdux-react';
 
-import count from './reducers/counterReducer';
+import counter from './reducers/counterReducer';
 
 import Counter from './components/Counter';
 
-const store = createStore({ count });
+const store = createStore({ counter });
 
 const Main = styled.div`
   width: 100%;
