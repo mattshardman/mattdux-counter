@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { connect } from '../mattdux-react';
 // import { connect } from 'react-redux';
 
-import { add as addAction, sub as subAction } from '../actions';
+import { add, sub } from '../actions';
 
 const Container = styled.section`
   box-sizing: border-box;
@@ -54,14 +54,14 @@ const Buttons = styled.div`
 `;
 
 function Counter(props) {
-  const { add, sub, num } = props;
+  const { add: adder, sub: subber, num } = props;
 
   return (
     <Container>
       <Screen><h1>{num}</h1></Screen>
       <Buttons>
-        <button type="button" onClick={add}>+</button>
-        <button type="button" onClick={sub}>-</button>
+        <button type="button" onClick={adder}>+</button>
+        <button type="button" onClick={subber}>-</button>
       </Buttons>
     </Container>
   );
@@ -75,4 +75,4 @@ Counter.propTypes = {
 
 const mapStateToProps = state => state.counter;
 
-export default connect(mapStateToProps, { addAction, subAction })(Counter);
+export default connect(mapStateToProps, { add, sub })(Counter);
