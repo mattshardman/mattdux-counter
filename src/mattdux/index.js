@@ -12,7 +12,7 @@ class Mattdux {
     }, {});
 
     this.store = newStore;
-    return newStore;
+    return this.store;
   }
 
   createStore = (reducers) => {
@@ -25,6 +25,10 @@ class Mattdux {
       this.store = { ...this.store, [reducerName]: initialState };
     });
   }
+}
+
+export function combineReducers(reducerObj) {
+  return reducerObj;
 }
 
 export function createStore(reducers) {
