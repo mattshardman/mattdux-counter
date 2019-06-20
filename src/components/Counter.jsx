@@ -1,8 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { connect } from '../mattdux-react';
+// import { connect } from 'react-redux';
 
-import { add, sub } from '../actions';
+import { add as addAction, sub as subAction } from '../actions';
 
 const Container = styled.section`
   box-sizing: border-box;
@@ -65,6 +67,12 @@ function Counter(props) {
   );
 }
 
+Counter.propTypes = {
+  add: PropTypes.func.isRequired,
+  sub: PropTypes.func.isRequired,
+  num: PropTypes.number.isRequired,
+};
+
 const mapStateToProps = state => state.counter;
 
-export default connect(mapStateToProps, { add, sub })(Counter);
+export default connect(mapStateToProps, { addAction, subAction })(Counter);
