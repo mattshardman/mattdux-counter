@@ -7,20 +7,21 @@ const connect = (mapStateToProps, actions) => (Component) => {
     const [state, setState] = useState();
     const [actionFunctions, setActionFunctions] = useState();
 
+    const actionsArr = Object.entries(actions);
+
     useEffect(() => {
       setState(mattdux.store);
 
-      const actionsArr = Object.entries(actions);
       const funcs = actionsArr.reduce((acc, [actionName, actionFunc]) => {
         acc[actionName] = (input) => {
-          const payload = actionFunc(input);
-          const newState = mattdux.callReducers(payload);
+          const action = actionFunc(input);
+          const newState = mattdux.callReducers(action);
           setState(newState);
         };
         return acc;
       }, {});
 
-      setActionFunctions(funcs);
+      return setActionFunctions(funcs);
     }, []);
 
     return (
