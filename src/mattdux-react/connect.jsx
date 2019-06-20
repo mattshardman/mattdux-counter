@@ -25,7 +25,7 @@ const connect = (mapStateToProps, actions) => (Component) => {
             const stateSlice = mapStateToProps(newState);
             setState(stateSlice);
           } else {
-            setState(mattdux.store);
+            setState(newState);
           }
         };
         return acc;
