@@ -24,6 +24,8 @@ const connect = (mapStateToProps, actions) => (Component) => {
       return setActionFunctions(funcs);
     }, []);
 
+    if (!state) return null;
+
     return (
       <Component {...props} {...actionFunctions} {...state} />
     );
