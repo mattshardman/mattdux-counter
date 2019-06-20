@@ -4,18 +4,12 @@ import { Context } from '.';
 const connect = (mapStateToProps, actions) => (Component) => {
   function Connect(props) {
     const mattdux = useContext(Context);
+
     const [state, setState] = useState();
     const [actionFunctions, setActionFunctions] = useState();
 
-    const actionsArr = Object.entries(actions);
-
-    useEffect(() => {
-      if (mapStateToProps) {
-        const stateSlice = mapStateToProps(mattdux.store);
-        setState(stateSlice);
-      } else {
-        setState(mattdux.store);
-      }
+    const createActionFunctions = () => {
+      const actionsArr = Object.entries(actions);
 
       const funcs = actionsArr.reduce((acc, [actionName, actionFunc]) => {
         acc[actionName] = (input) => {
@@ -32,13 +26,24 @@ const connect = (mapStateToProps, actions) => (Component) => {
       }, {});
 
       return setActionFunctions(funcs);
+    };
+
+    useEffect(() => {
+      if (mapStateToProps) {
+        const stateSlice = mapStateToProps(mattdux.store);
+        setState(stateSlice);
+      } else {
+        setState(mattdux.store);
+      }
+    }, []);
+
+    useEffect(() => {
+      createActionFunctions();
     }, []);
 
     if (!state) return null;
 
-    return (
-      <Component {...props} {...actionFunctions} {...state} />
-    );
+    return <Component {...props} {...actionFunctions} {...state} />;
   }
 
   return Connect;
