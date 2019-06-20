@@ -48,13 +48,14 @@ const Buttons = styled.div`
 `;
 
 function Counter(props) {
+  const { add, sub } = props;
   console.log(props);
   return (
     <Container>
       <Screen><h1>counter!!</h1></Screen>
       <Buttons>
-        <button type="button" >+</button>
-        <button type="button">-</button>
+        <button type="button" onClick={add}>+</button>
+        <button type="button" onClick={sub}>-</button>
       </Buttons>
     </Container>
   );
