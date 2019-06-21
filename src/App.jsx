@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { createStore } from './mattdux';
-// import { createStore } from 'redux';
-import { Provider } from './mattdux-react';
-// import { Provider } from 'react-redux';
+// import { createStore } from './mattdux';
+import { createStore } from 'redux';
+// import { Provider } from './mattdux-react';
+import { Provider } from 'react-redux';
 
 import rootReducer from './reducers';
 
