@@ -1,5 +1,10 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+// import { connect } from '../mattdux-react';
+import { connect } from 'react-redux';
+
+import { add, sub } from '../actions';
 
 const Container = styled.section`
   box-sizing: border-box;
@@ -25,6 +30,10 @@ const Screen = styled.div`
   border: 1px solid #dadce0;
   border-radius: 4px;
   background: rgb(232, 240, 254);
+
+  h1 {
+    font-size: 60px;
+  }
 `;
 
 const Buttons = styled.div`
@@ -44,16 +53,26 @@ const Buttons = styled.div`
   }
 `;
 
-function Counter() {
+function Counter(props) {
+  const { add: adder, sub: subber, num } = props;
+
   return (
     <Container>
-      <Screen><h1>counter!!</h1></Screen>
+      <Screen><h1>{num}</h1></Screen>
       <Buttons>
-        <button>+</button>
-        <button>-</button>
+        <button type="button" onClick={adder}>+</button>
+        <button type="button" onClick={subber}>-</button>
       </Buttons>
     </Container>
   );
 }
 
-export default Counter;
+Counter.propTypes = {
+  add: PropTypes.func.isRequired,
+  sub: PropTypes.func.isRequired,
+  num: PropTypes.number.isRequired,
+};
+
+const mapStateToProps = state => state.counter;
+
+export default connect(mapStateToProps, { add, sub })(Counter);
